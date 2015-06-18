@@ -6,4 +6,9 @@ package request.nodes;
 public class FelixNode {
     String ip;
     String dnsName;
+    private String IP;
+
+    public String getIp() {
+        return ip;
+    }
 }

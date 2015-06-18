@@ -23,9 +23,7 @@ public class AvailableFelixNodes {
     public final static String UNVERIFIED_NODES = "request.nodes.coordination.unverified.nodes";
     public final static String AVAILABLE_NODES = "request.nodes.coordination.available.nodes";
 
-
     private final LinkedList<FelixNode> availableNodes = new LinkedList<FelixNode>();
-
     private final LinkedList<FelixNode> unverifiedNodes = new LinkedList<FelixNode>();
 
     /**
@@ -46,9 +44,7 @@ public class AvailableFelixNodes {
         try {
             sched = schedFact.getScheduler();
             sched.start();
-        } catch (SchedulerException e) {
-            logger.error(e.getMessage());
-        }
+
 
         logger.error("request.nodes.coordination.AvailableFelixNodes initialization started");
         JobDetail job = newJob(FelixNodeAvailabilityCheckerJob.class)
@@ -64,12 +60,10 @@ public class AvailableFelixNodes {
                         .repeatForever())
                 .build();
 
-        try {
-            sched.scheduleJob(job, trigger);
+                sched.scheduleJob(job, trigger);
         } catch (SchedulerException e) {
-            throw new RuntimeException(e);
+            logger.error("Unable to instantiate due to", e);
         }
         logger.error("request.nodes.coordination.AvailableFelixNodes initialized");
     }
-
 }

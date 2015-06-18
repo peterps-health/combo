@@ -49,9 +49,9 @@
                             !org.apache.log4j.spi,
                             *
                         </Import-Package>
-                        <!--<Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>-->
-                        <!--<Embed-Directory>OSGI-INF/lib</Embed-Directory>-->
-                        <!--<Embed-Transitive>true</Embed-Transitive>-->
+                        <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+                        <Embed-Directory>OSGI-INF/lib</Embed-Directory>
+                        <Embed-Transitive>true</Embed-Transitive>
                     </instructions>
                 </configuration>
             </plugin>
@@ -88,16 +88,23 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.quartz-scheduler</groupId>-->
-            <!--<artifactId>quartz</artifactId>-->
-            <!--<version>2.2.1</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.2.1</version>
+            <scope>compile</scope>
+        </dependency>
 
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.12</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
             <version>1.7.12</version>
             <scope>provided</scope>
         </dependency>

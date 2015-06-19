@@ -7,6 +7,7 @@ import org.osgi.service.component.ComponentContext;
 import org.quartz.*;
 import org.slf4j.LoggerFactory;
 import request.nodes.FelixNode;
+import request.nodes.coordination.exceptions.NodeAlreadyExistsException;
 
 import java.util.LinkedList;
 
@@ -31,7 +32,8 @@ public class AvailableFelixNodes {
      * Once node gets verified, it will be added to the list of available nodes
      * @param felixNode - Node you would like to add
      */
-    public void addNode(FelixNode felixNode) {
+    public void addNode(FelixNode felixNode) throws NodeAlreadyExistsException{
+        // TODO add check for FelixNode existence
         unverifiedNodes.add(felixNode);
     }
 

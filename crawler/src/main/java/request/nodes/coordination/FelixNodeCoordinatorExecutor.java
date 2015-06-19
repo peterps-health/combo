@@ -1,5 +1,7 @@
 package request.nodes.coordination;
 
+import org.apache.commons.codec.binary.StringUtils;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +14,8 @@ import java.util.Date;
  */
 public class FelixNodeCoordinatorExecutor extends HttpServlet {
 
+    private final static String IP ="request.nodes.coordination.FelixNodeCoordinatorExecutor.ip";
+
     public FelixNodeCoordinatorExecutor(AvailableFelixNodes availableFelixNodes) {
         this.availableFelixNodes = availableFelixNodes;
     }
@@ -19,10 +23,6 @@ public class FelixNodeCoordinatorExecutor extends HttpServlet {
     private AvailableFelixNodes availableFelixNodes;
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        try {
-            resp.getOutputStream().print(String.format("{beat:%s}", new Date().getTime()));
-        } catch (IOException e) {
-
-        }
+        req.getParameter(IP);
     }
 }
